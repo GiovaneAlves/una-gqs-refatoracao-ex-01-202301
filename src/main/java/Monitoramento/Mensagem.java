@@ -1,3 +1,5 @@
+package Monitoramento;
+
 import java.util.Scanner;
 
 public class Mensagem {
@@ -110,7 +112,7 @@ public class Mensagem {
   }
 
   public void imprimirMensagemErro() {
-    System.out.println("Não foi possível realizar o ZZZZZZZZZZ." +
-        "Gentileza ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ.");
+    System.out.println("Não foi possível realizar a verificação." +
+        "Gentileza informar dados válidos.");
   }
 }

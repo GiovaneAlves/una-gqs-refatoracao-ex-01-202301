@@ -1,3 +1,5 @@
+package Monitoramento;
+
 import java.util.Scanner;
 
 class Programa {
@@ -10,15 +12,15 @@ class Programa {
 
     System.out.println("\tRelatório Auxiliar de Controle de Infecções");
 
-    pessoa.coletaNome(sc);
-    pessoa.coletaIdade(sc);
+    pessoa.coletaNome(pessoa, scanner);
+    pessoa.coletaIdade(pessoa, scanner);
 
-    erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pesssoa);
+    erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
 
-    validacao.validacaoDasProximasPerguntas(pessoas);
+    validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas,scanner);
 
-    validacao.calcularValidacaoFinal(erroTentativass);
+    validacao.calcularValidacaoFinal(pessoa, mensagem, erroTentativas);
 
-    // scanner.close();
+    scanner.close();
   }
 }
