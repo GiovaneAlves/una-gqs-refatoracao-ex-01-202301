@@ -11,32 +11,32 @@ public class Validacao {
       calculoPorcentagem.calculaPorcentagem(pessoa);
 
       // Verifico se a pessoa está retornando de viagem
-      if (pessoa.estaRetornandoViagem.equals("SIM")) {
+      if (pessoa.getEstaRetornandoViagem().equals("SIM")) {
         mensagem.imprimirRelatorioFinal(pessoa);
         
       } 
       else {
     	  
         // Verifico a porcentagem de infecção
-        if (pessoa.porcentagemInfeccao >=0 && pessoa.porcentagemInfeccao <= 30) {
-          pessoa.orientacaoFinal = "Paciente sob observação. Caso apareça algum sintoma, "
-          		+ "gentileza buscar assistência médica.";
+        if (pessoa.getPorcentagemInfeccao() >=0 && pessoa.getPorcentagemInfeccao() <= 30) {
+          pessoa.setOrientacaoFinal ("Paciente sob observação. Caso apareça algum sintoma, "
+          		+ "gentileza buscar assistência médica.");
           mensagem.imprimirRelatorioFinal(pessoa);
         } 
         
-        else if (pessoa.porcentagemInfeccao >= 31 && pessoa.porcentagemInfeccao <= 60) {
-            pessoa.orientacaoFinal = "Paciente com risco de estar infectado. "
-            		+ "Gentileza aguardar em lockdown por 02 dias para ser acompanhado.";
+        else if (pessoa.getPorcentagemInfeccao() >= 31 && pessoa.getPorcentagemInfeccao() <= 60) {
+            pessoa.setOrientacaoFinal ("Paciente com risco de estar infectado. "
+            		+ "Gentileza aguardar em lockdown por 02 dias para ser acompanhado.");
             mensagem.imprimirRelatorioFinal(pessoa);
         } 
-        else if (pessoa.porcentagemInfeccao >= 61 && pessoa.porcentagemInfeccao <= 89) {
-            pessoa.orientacaoFinal = "Paciente com alto risco de estar infectado. "
-            		+ "Gentileza aguardar em lockdown por 05 dias para ser acompanhado.";
+        else if (pessoa.getPorcentagemInfeccao() >= 61 && pessoa.getPorcentagemInfeccao() <= 89) {
+            pessoa.setOrientacaoFinal ("Paciente com alto risco de estar infectado. "
+            		+ "Gentileza aguardar em lockdown por 05 dias para ser acompanhado.");
             mensagem.imprimirRelatorioFinal(pessoa);
         } 
         else {
-          pessoa.orientacaoFinal = "Paciente crítico! "
-          		+ "Gentileza aguardar em lockdown por 10 dias para ser acompanhado";
+          pessoa.setOrientacaoFinal ("Paciente crítico! "
+          		+ "Gentileza aguardar em lockdown por 10 dias para ser acompanhado");
           mensagem.imprimirRelatorioFinal(pessoa);
         }
       }

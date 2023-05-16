@@ -3,14 +3,14 @@ package Monitoramento;
 import java.util.Scanner;
 
 public class Pessoa {
-  public String nome;
-  public int idade;
-  public String cartaoVacinaEmDia;
-  public String teveSintomasRecentemente;
-  public String teveContatoComPessoasSintomaticas;
-  public String estaRetornandoViagem;
-  public int porcentagemInfeccao;
-  public String orientacaoFinal;
+  private String nome;
+  private int idade;
+  private String cartaoVacinaEmDia;
+  private String teveSintomasRecentemente;
+  private String teveContatoComPessoasSintomaticas;
+  private String estaRetornandoViagem;
+  private int porcentagemInfeccao;
+  private String orientacaoFinal;
 
   public Pessoa () {}
   

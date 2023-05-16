@@ -3,21 +3,21 @@ package Monitoramento;
 public class CalculoPorcentagem {
   public void calculaPorcentagem(Pessoa pessoa) {
     
-	  if (pessoa.estaRetornandoViagem.equals("SIM")) {
-      pessoa.porcentagemInfeccao += 30;
-      pessoa.orientacaoFinal = "Você ficará sob observação por 05 dias.";
+	  if (pessoa.getEstaRetornandoViagem().equals("SIM")) {
+      pessoa.setPorcentagemInfeccao(30);
+      pessoa.setOrientacaoFinal ("Você ficará sob observação por 05 dias.");
 	  }
 
-	  if (pessoa.cartaoVacinaEmDia.equals("NAO")) {
-      pessoa.porcentagemInfeccao += 10;
+	  if (pessoa.getCartaoVacinaEmDia().equals("NAO")) {
+      pessoa.setPorcentagemInfeccao (10);
 	  }
 
-	  if (pessoa.teveSintomasRecentemente.equals("SIM")) {
-      pessoa.porcentagemInfeccao += 30;
+	  if (pessoa.getTeveSintomasRecentemente().equals("SIM")) {
+      pessoa.setPorcentagemInfeccao (30);
 	  }
 
-	  if (pessoa.teveContatoComPessoasSintomaticas.equals("SIM")) {
-      pessoa.porcentagemInfeccao += 30;
+	  if (pessoa.getTeveContatoComPessoasSintomaticas().equals("SIM")) {
+      pessoa.setPorcentagemInfeccao (30);
 	  }
   }
 }
