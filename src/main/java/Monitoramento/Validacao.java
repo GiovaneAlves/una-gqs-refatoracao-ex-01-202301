@@ -18,18 +18,18 @@ public class Validacao {
       else {
     	  
         // Verifico a porcentagem de infecção
-        if (pessoa.porcentagemInfeccao >= 30) {
+        if (pessoa.porcentagemInfeccao >=0 && pessoa.porcentagemInfeccao <= 30) {
           pessoa.orientacaoFinal = "Paciente sob observação. Caso apareça algum sintoma, "
           		+ "gentileza buscar assistência médica.";
           mensagem.imprimirRelatorioFinal(pessoa);
         } 
         
-        if (pessoa.porcentagemInfeccao >= 60) {
+        else if (pessoa.porcentagemInfeccao >= 31 && pessoa.porcentagemInfeccao <= 60) {
             pessoa.orientacaoFinal = "Paciente com risco de estar infectado. "
             		+ "Gentileza aguardar em lockdown por 02 dias para ser acompanhado.";
             mensagem.imprimirRelatorioFinal(pessoa);
         } 
-        if (pessoa.porcentagemInfeccao >= 89) {
+        else if (pessoa.porcentagemInfeccao >= 61 && pessoa.porcentagemInfeccao <= 89) {
             pessoa.orientacaoFinal = "Paciente com alto risco de estar infectado. "
             		+ "Gentileza aguardar em lockdown por 05 dias para ser acompanhado.";
             mensagem.imprimirRelatorioFinal(pessoa);
