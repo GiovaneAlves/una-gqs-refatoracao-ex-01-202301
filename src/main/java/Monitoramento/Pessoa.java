@@ -16,6 +16,7 @@ public class Pessoa {
    public void coletaNome(Pessoa pessoa, Scanner scanner) {
    System.out.println("\nInforme o seu nome: ");
    pessoa.nome = scanner.nextLine();
+   pessoa.nome = nome.trim().toUpperCase();
    }
    
   public void coletaIdade(Pessoa pessoa, Scanner scanner) {
