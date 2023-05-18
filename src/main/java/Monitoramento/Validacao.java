@@ -4,14 +4,15 @@ import java.util.Scanner;
 public class Validacao {
   public void calcularValidacaoFinal(Pessoa pessoa, Mensagem mensagem, boolean erroTentativas) {
     // Valido se imprimo a mensagem de erro
-    if (erroTentativas == true) {
+    if (erroTentativas) {
       mensagem.imprimirMensagemErro();
-    } else {
+    } 
+    else {
       CalculoPorcentagem calculoPorcentagem = new CalculoPorcentagem();
       calculoPorcentagem.calculaPorcentagem(pessoa);
 
       // Verifico se a pessoa está retornando de viagem
-      if (pessoa.getEstaRetornandoViagem().equals("SIM")) {
+      if (pessoa.getEstaRetornandoViagem().equals("SIM")&& pessoa.getPorcentagemInfeccao() <= 89) {
         mensagem.imprimirRelatorioFinal(pessoa);
         
       } 
@@ -45,15 +46,16 @@ public class Validacao {
 
   public void validacaoDasProximasPerguntas(Mensagem mensagem, Pessoa pessoa, boolean erroTentativas, Scanner scanner) {
     // Valido se continuo perguntando ou se vou direto para a mensagem final
-    if (erroTentativas == false)
+    if (!erroTentativas)
       erroTentativas = mensagem.realizaPerguntaTeveSintomasRecenmente(pessoa, scanner);
 
-    if (erroTentativas == false) {
+    if (!erroTentativas) {
       erroTentativas = mensagem.realizaPerguntaTeveContatoPessoasAssintomaticas(pessoa, scanner);
     }
 
-    if (erroTentativas == false) {
+    if (!erroTentativas) {
       erroTentativas = mensagem.realizaPerguntaEstaRetornandoViagemExterior(pessoa,scanner);
     }
+
   }
 }

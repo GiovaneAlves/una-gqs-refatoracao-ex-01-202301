@@ -15,11 +15,17 @@ class Programa {
     pessoa.coletaNome(pessoa, scanner);
     pessoa.coletaIdade(pessoa, scanner);
 
-    erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
+    try {
+    	erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
+    	validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas,scanner);
+    	validacao.calcularValidacaoFinal(pessoa, mensagem, erroTentativas);
+    }
+    catch (RuntimeException e) {
+		mensagem.imprimirMensagemErro();
+		System.exit (0);
+	}
 
-    validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas,scanner);
 
-    validacao.calcularValidacaoFinal(pessoa, mensagem, erroTentativas);
 
     scanner.close();
   }

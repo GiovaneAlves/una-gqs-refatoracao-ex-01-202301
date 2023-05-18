@@ -103,7 +103,7 @@ public class Pessoa {
 	}
 	
 	public void setPorcentagemInfeccao(int porcentagemInfeccao) {
-		this.porcentagemInfeccao = porcentagemInfeccao;
+		this.porcentagemInfeccao += porcentagemInfeccao;
 	}
 	
 	public String getOrientacaoFinal() {
