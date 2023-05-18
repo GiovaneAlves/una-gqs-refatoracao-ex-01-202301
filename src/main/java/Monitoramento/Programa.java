@@ -21,6 +21,7 @@ class Programa {
 		System.exit (0);
 	}
     
+    
     try {
     	erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
     	validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas,scanner);
