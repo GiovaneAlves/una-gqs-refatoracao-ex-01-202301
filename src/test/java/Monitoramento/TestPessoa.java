@@ -22,20 +22,6 @@ public class TestPessoa {
         }
     }
 
-    @Test
-    public void testColetaNome_CaracteresEspeciais() {
-        Pessoa pessoa = new Pessoa();
-        String input = "@^~";
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        Scanner scanner = new Scanner(inputStream);
-        
-        try {
-            pessoa.coletaNome(pessoa, scanner);
-            fail("Deveria ter lançado IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            assertEquals("O nome não pode conter números ou caracteres especiais.", e.getMessage());
-        }
-    }
 
     @Test
     public void testColetaNome_Correto() {
@@ -50,21 +36,6 @@ public class TestPessoa {
     }
 
     @Test
-    public void testColetaIdade_IdadeInvalida() {
-        Pessoa pessoa = new Pessoa();
-        String input = "150\n200\n253";
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        Scanner scanner = new Scanner(inputStream);
-        
-        try {
-            pessoa.coletaIdade(pessoa, scanner);
-            fail("Deveria ter lançado RuntimeException");
-        } catch (RuntimeException e) {
-            assertEquals("Não foi possível realizar a verificação. Gentileza informar dados válidos.", e.getMessage());
-        }
-    }
-
-    @Test
     public void testColetaIdade_Correto() {
         Pessoa pessoa = new Pessoa();
         String input = "30";
@@ -76,6 +47,37 @@ public class TestPessoa {
         assertEquals(30, pessoa.getIdade());
     }
 
+    @Test
+    public void testColetaIdade_IdadeInvalida() {
+        Pessoa pessoa = new Pessoa();
+        String input = "150\n200\n355";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        Scanner scanner = new Scanner(inputStream);
+
+        try {
+            pessoa.coletaIdade(pessoa, scanner);
+            fail("Deveria ter lançado RuntimeException");
+        } catch (RuntimeException e) {
+            assertEquals("Não foi possível realizar a verificação. \nGentileza informar dados válidos.", e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testColetaNome_CaracteresEspeciais() {
+        Pessoa pessoa = new Pessoa();
+        String input = "@^~";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        Scanner scanner = new Scanner(inputStream);
+
+        try {
+            pessoa.coletaNome(pessoa, scanner);
+            fail("Deveria ter lançado IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            assertEquals("O nome não pode conter números ou caracteres especiais", e.getMessage());
+        }
+    }
+
+    
     @Test
     public void testSetCartaoVacinaEmDia() {
         Pessoa pessoa = new Pessoa();

@@ -29,17 +29,20 @@ public class Pessoa {
 	this.resposta = resposta;
    }
 
-   public void coletaNome(Pessoa pessoa, Scanner scanner) {
-	   System.out.println("\nInforme o seu nome: ");
-	   pessoa.nome = scanner.nextLine();
-	   pessoa.nome = nome.trim().toUpperCase();
-	   
-		if (nome.trim().isEmpty()) 
-			throw new RuntimeException("O nome não pode ser vazio.");
-	
-		if (!nome.matches("^[\\p{L}\\s]+$")) 
+  public void coletaNome(Pessoa pessoa, Scanner scanner) {
+	    System.out.println("\nInforme o seu nome: ");
+	    pessoa.nome = scanner.nextLine();
+	    pessoa.nome = pessoa.nome.trim().toUpperCase();
+
+	    if (pessoa.nome.trim().isEmpty()) {
+	        throw new RuntimeException("O nome não pode ser vazio.");
+	    }
+
+	    if (!pessoa.nome.matches("^[\\p{L}\\s]+$")) {
 	        throw new IllegalArgumentException("O nome não pode conter números ou caracteres especiais");
-   }
+	    }
+	}
+
    
 
   public void coletaIdade(Pessoa pessoa, Scanner scanner) {
