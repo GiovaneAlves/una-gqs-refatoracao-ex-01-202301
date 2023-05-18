@@ -30,14 +30,39 @@ public class Pessoa {
    }
 
    public void coletaNome(Pessoa pessoa, Scanner scanner) {
-   System.out.println("\nInforme o seu nome: ");
-   pessoa.nome = scanner.nextLine();
-   pessoa.nome = nome.trim().toUpperCase();
+	   System.out.println("\nInforme o seu nome: ");
+	   pessoa.nome = scanner.nextLine();
+	   pessoa.nome = nome.trim().toUpperCase();
+	   
+		if (nome.trim().isEmpty()) 
+			throw new RuntimeException("O nome não pode ser vazio.");
+	
+		if (!nome.matches("^[\\p{L}\\s]+$")) 
+	        throw new IllegalArgumentException("O nome não pode conter números ou caracteres especiais");
    }
    
+
   public void coletaIdade(Pessoa pessoa, Scanner scanner) {
-    System.out.println("\nInforme a sua idade: ");
-    pessoa.idade = scanner.nextInt();
+	  int cont = 0; 
+	  
+	  do {
+		  System.out.println("\nInforme a sua idade: ");
+		  pessoa.idade = scanner.nextInt();
+		  
+	      if (idade>0&&idade<120) {
+	          break;
+	        } 
+	      
+	      else {
+	          cont++;
+	          System.out.println("\nResposta inválida! Digite uma idade de 0 à 120 anos!");
+	  	        if (cont == 3) {
+	  	          throw new RuntimeException("Não foi possível realizar a verificação. "
+	  	          		+ "\nGentileza informar dados válidos.");
+	  	        }
+	      }
+	      
+	      } while (true);
   }
 
 	public String getNome() {

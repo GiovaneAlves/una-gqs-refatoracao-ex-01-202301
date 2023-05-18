@@ -12,9 +12,15 @@ class Programa {
 
     System.out.println("\tRelatório Auxiliar de Controle de Infecções");
 
-    pessoa.coletaNome(pessoa, scanner);
-    pessoa.coletaIdade(pessoa, scanner);
-
+    try {
+    	pessoa.coletaNome(pessoa, scanner);
+    	pessoa.coletaIdade(pessoa, scanner);
+    }
+    catch (RuntimeException e) {
+		System.out.println(e.getMessage());
+		System.exit (0);
+	}
+    
     try {
     	erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
     	validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas,scanner);
