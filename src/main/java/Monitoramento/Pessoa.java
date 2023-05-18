@@ -11,12 +11,13 @@ public class Pessoa {
   private String estaRetornandoViagem;
   private int porcentagemInfeccao;
   private String orientacaoFinal;
+  private String resposta;
 
   public Pessoa () {}
   
   public Pessoa(String nome, int idade, String cartaoVacinaEmDia, String teveSintomasRecentemente,
 		String teveContatoComPessoasSintomaticas, String estaRetornandoViagem, int porcentagemInfeccao,
-		String orientacaoFinal) {
+		String orientacaoFinal, String resposta) {
 	this.nome = nome;
 	this.idade = idade;
 	this.cartaoVacinaEmDia = cartaoVacinaEmDia;
@@ -25,6 +26,7 @@ public class Pessoa {
 	this.estaRetornandoViagem = estaRetornandoViagem;
 	this.porcentagemInfeccao = porcentagemInfeccao;
 	this.orientacaoFinal = orientacaoFinal;
+	this.resposta = resposta;
    }
 
    public void coletaNome(Pessoa pessoa, Scanner scanner) {
@@ -59,14 +61,22 @@ public class Pessoa {
 	}
 	
 	public void setCartaoVacinaEmDia(String cartaoVacinaEmDia) {
-		this.cartaoVacinaEmDia = cartaoVacinaEmDia;
-	}
+		if (cartaoVacinaEmDia.equals("NÃO")) {
+			this.cartaoVacinaEmDia = "NAO";
+			setResposta(cartaoVacinaEmDia);
+		}
+		else {
+			this.cartaoVacinaEmDia = cartaoVacinaEmDia;
+			setResposta(cartaoVacinaEmDia);
+		}
+	}	
 	
 	public String getTeveSintomasRecentemente() {
 		return teveSintomasRecentemente;
 	}
 	
 	public void setTeveSintomasRecentemente(String teveSintomasRecentemente) {
+		setResposta(teveSintomasRecentemente);
 		this.teveSintomasRecentemente = teveSintomasRecentemente;
 	}
 	
@@ -75,6 +85,7 @@ public class Pessoa {
 	}
 	
 	public void setTeveContatoComPessoasSintomaticas(String teveContatoComPessoasSintomaticas) {
+		setResposta(teveContatoComPessoasSintomaticas);
 		this.teveContatoComPessoasSintomaticas = teveContatoComPessoasSintomaticas;
 	}
 	
@@ -83,6 +94,7 @@ public class Pessoa {
 	}
 	
 	public void setEstaRetornandoViagem(String estaRetornandoViagem) {
+		setResposta(estaRetornandoViagem); 
 		this.estaRetornandoViagem = estaRetornandoViagem;
 	}
 	
@@ -101,5 +113,14 @@ public class Pessoa {
 	public void setOrientacaoFinal(String orientacaoFinal) {
 		this.orientacaoFinal = orientacaoFinal;
 	}
-  
+
+	public String getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(String resposta) {
+		this.resposta = resposta;
+	}
+	
+	
 }

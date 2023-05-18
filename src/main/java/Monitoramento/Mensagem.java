@@ -3,7 +3,7 @@ package Monitoramento;
 import java.util.Scanner;
 
 public class Mensagem {
-
+	
   public boolean realizaPerguntaVacinaEmDia(Pessoa pessoa, Scanner scanner) {
     int contador = 0;
     boolean erroTentativas = false;
@@ -13,7 +13,8 @@ public class Mensagem {
       
       pessoa.setCartaoVacinaEmDia (scanner.next().toUpperCase());
       	
-      	if (pessoa.getCartaoVacinaEmDia().equals("SIM") || pessoa.getCartaoVacinaEmDia().equals("NAO")) {
+
+      	if (tratamentoResposta(pessoa)) {
         break;
       	} 
       	
@@ -41,21 +42,22 @@ public class Mensagem {
       
       pessoa.setTeveSintomasRecentemente (scanner.next().toUpperCase());
       
-      	if (pessoa.getTeveSintomasRecentemente().equals("SIM") || pessoa.getTeveSintomasRecentemente().equals("NAO")) {
+      	if (tratamentoResposta(pessoa)) {
       		break;
       	} 
       	else {
-        contador++;
-        System.out.println("\nDigito inválido! Digite SIM ou NAO.");
-        	if (contador == 3) {
-        		erroTentativas = true;
-        		break;
-        	}
-      	}
-    } while (true);
+            contador++;
+            System.out.println("\nDigito inválido! Digite SIM ou NAO.");
+            
+            	if (contador == 3) {
+            		erroTentativas = true;
+            		break;
+            	}
+          	}
+        } while (true);
 
-    return erroTentativas;
-  }
+        return erroTentativas;
+      }
 
   public boolean realizaPerguntaTeveContatoPessoasAssintomaticas(Pessoa pessoa, Scanner scanner) {
     int contador = 0;
@@ -67,8 +69,7 @@ public class Mensagem {
       
       pessoa.setTeveContatoComPessoasSintomaticas(scanner.next().toUpperCase());
       
-      if (pessoa.getTeveContatoComPessoasSintomaticas().equals("SIM")
-          || pessoa.getTeveContatoComPessoasSintomaticas().equals("NAO")) {
+      if (tratamentoResposta(pessoa)) {
         break;
       } 
       else {
@@ -94,8 +95,7 @@ public class Mensagem {
       
       pessoa.setEstaRetornandoViagem(scanner.next().toUpperCase());
       
-      if (pessoa.getEstaRetornandoViagem().equals("SIM")
-          || pessoa.getEstaRetornandoViagem().equals("NAO")) {
+      if (tratamentoResposta(pessoa)) {
         break;
       } 
       else {
@@ -114,7 +114,7 @@ public class Mensagem {
   public void imprimirRelatorioFinal(Pessoa pessoa) {
     System.out.println("\nNome: " + pessoa.getNome());
     System.out.println("Idade: " + pessoa.getIdade() + " anos");
-    System.out.println("Cartão Vacinal em Dia: " + pessoa.getCartaoVacinaEmDia());
+    System.out.println("Cartão Vacina em Dia: " + pessoa.getCartaoVacinaEmDia());
     System.out.println("Teve sintomas recentemente: " + pessoa.getTeveSintomasRecentemente());
     System.out.println("Teve contato com pessoas infectadas: " + pessoa.getTeveContatoComPessoasSintomaticas());
     System.out.println("Esta retornando de viagem: " + pessoa.getEstaRetornandoViagem());
@@ -126,4 +126,17 @@ public class Mensagem {
     System.out.println("Não foi possível realizar a verificação." +
         "Gentileza informar dados válidos.");
   }
+  
+  public boolean tratamentoResposta (Pessoa pessoa){
+  	  
+  	  if (pessoa.getResposta().equals("SIM"))
+  		return true;	  
+  	  else if (pessoa.getResposta().equals("NAO"))
+  		return true;
+  	  else if (pessoa.getResposta().equals("NÃO"))
+  		return true;
+  	  
+  	  return false;
+  }
+	
 }
