@@ -10,15 +10,16 @@ public class TestPessoa {
     @Test
     public void testColetaNome_NomeVazio() {
         Pessoa pessoa = new Pessoa();
+        Mensagem mensagem = new Mensagem();
         String input = "\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(inputStream);
         
         try {
-            pessoa.coletaNome(pessoa, scanner);
+            pessoa.coletaNome(pessoa, scanner, mensagem);
             fail("Deveria ter lançado RuntimeException");
         } catch (RuntimeException e) {
-            assertEquals("O nome não pode ser vazio.", e.getMessage());
+            assertEquals(mensagem.imprimirMensagemErro(), e.getMessage());
         }
     }
 
@@ -26,11 +27,12 @@ public class TestPessoa {
     @Test
     public void testColetaNome_Correto() {
         Pessoa pessoa = new Pessoa();
+        Mensagem mensagem = new Mensagem();
         String input = "João";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(inputStream);
         
-        pessoa.coletaNome(pessoa, scanner);
+        pessoa.coletaNome(pessoa, scanner, mensagem);
         
         assertEquals("JOÃO", pessoa.getNome());
     }
@@ -38,11 +40,12 @@ public class TestPessoa {
     @Test
     public void testColetaIdade_Correto() {
         Pessoa pessoa = new Pessoa();
+        Mensagem mensagem = new Mensagem();
         String input = "30";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(inputStream);
         
-        pessoa.coletaIdade(pessoa, scanner);
+        pessoa.coletaIdade(pessoa, scanner, mensagem);
         
         assertEquals(30, pessoa.getIdade());
     }
@@ -50,30 +53,32 @@ public class TestPessoa {
     @Test
     public void testColetaIdade_IdadeInvalida() {
         Pessoa pessoa = new Pessoa();
+        Mensagem mensagem = new Mensagem();
         String input = "150\n200\n355";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(inputStream);
 
         try {
-            pessoa.coletaIdade(pessoa, scanner);
+            pessoa.coletaIdade(pessoa, scanner, mensagem);
             fail("Deveria ter lançado RuntimeException");
         } catch (RuntimeException e) {
-            assertEquals("Não foi possível realizar a verificação. \nGentileza informar dados válidos.", e.getMessage());
+            assertEquals(mensagem.imprimirMensagemErro(), e.getMessage());
         }
     }
     
     @Test
     public void testColetaNome_CaracteresEspeciais() {
         Pessoa pessoa = new Pessoa();
+        Mensagem mensagem = new Mensagem();
         String input = "@^~";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(inputStream);
 
         try {
-            pessoa.coletaNome(pessoa, scanner);
+            pessoa.coletaNome(pessoa, scanner,mensagem);
             fail("Deveria ter lançado IllegalArgumentException");
         } catch (IllegalArgumentException e) {
-            assertEquals("O nome não pode conter números ou caracteres especiais", e.getMessage());
+            assertEquals(mensagem.imprimirMensagemErro(), e.getMessage());
         }
     }
 

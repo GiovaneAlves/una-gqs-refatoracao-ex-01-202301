@@ -5,7 +5,6 @@ public class CalculoPorcentagem {
     
 	  if (pessoa.getEstaRetornandoViagem().equals("SIM")) {
       pessoa.setPorcentagemInfeccao(30);
-      pessoa.setOrientacaoFinal ("Você ficará sob observação por 05 dias.");
 	  }
 
 	  if (pessoa.getCartaoVacinaEmDia().equals("NAO")) {

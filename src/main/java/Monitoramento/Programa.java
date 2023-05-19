@@ -13,14 +13,13 @@ class Programa {
     System.out.println("\tRelatório Auxiliar de Controle de Infecções");
 
     try {
-    	pessoa.coletaNome(pessoa, scanner);
-    	pessoa.coletaIdade(pessoa, scanner);
+    	pessoa.coletaNome(pessoa, scanner, mensagem);
+    	pessoa.coletaIdade(pessoa, scanner, mensagem);
     }
     catch (RuntimeException e) {
 		System.out.println(e.getMessage());
 		System.exit (0);
 	}
-    
     
     try {
     	erroTentativas = validacao.validacaoDasPerguntas(mensagem, pessoa, erroTentativas, scanner);

@@ -29,23 +29,25 @@ public class Pessoa {
 	this.resposta = resposta;
    }
 
-  public void coletaNome(Pessoa pessoa, Scanner scanner) {
+  public void coletaNome(Pessoa pessoa, Scanner scanner, Mensagem mensagem) {
 	    System.out.println("\nInforme o seu nome: ");
 	    pessoa.nome = scanner.nextLine();
 	    pessoa.nome = pessoa.nome.trim().toUpperCase();
 
 	    if (pessoa.nome.trim().isEmpty()) {
-	        throw new RuntimeException("O nome não pode ser vazio.");
+	        System.out.println("O nome não pode ser vazio.");
+	    	throw new RuntimeException(mensagem.imprimirMensagemErro());
 	    }
 
 	    if (!pessoa.nome.matches("^[\\p{L}\\s]+$")) {
-	        throw new IllegalArgumentException("O nome não pode conter números ou caracteres especiais");
+	    	System.out.println("O nome não pode conter números ou caracteres especiais");
+	    	throw new IllegalArgumentException(mensagem.imprimirMensagemErro());
 	    }
 	}
 
    
 
-  public void coletaIdade(Pessoa pessoa, Scanner scanner) {
+  public void coletaIdade(Pessoa pessoa, Scanner scanner, Mensagem mensagem) {
 	  int cont = 0; 
 	  
 	  do {
@@ -60,8 +62,7 @@ public class Pessoa {
 	          cont++;
 	          System.out.println("\nResposta inválida! Digite uma idade de 0 à 120 anos!");
 	  	        if (cont == 3) {
-	  	          throw new RuntimeException("Não foi possível realizar a verificação. "
-	  	          		+ "\nGentileza informar dados válidos.");
+	  	          throw new RuntimeException(mensagem.imprimirMensagemErro());
 	  	        }
 	      }
 	      

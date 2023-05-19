@@ -20,7 +20,7 @@ public class Mensagem {
       	
       	else {
         contador++;
-        System.out.println("\nResposta inválido! Digite SIM ou NAO.");
+        System.out.println("\nResposta inválida! Digite SIM ou NAO.");
         
         	if (contador == 3) {
         		return erroTentativas = true;
@@ -46,7 +46,7 @@ public class Mensagem {
       	} 
       	else {
             contador++;
-            System.out.println("\nResposta inválido! Digite SIM ou NAO.");
+            System.out.println("\nResposta inválida! Digite SIM ou NAO.");
             
             	if (contador == 3) {
             		return erroTentativas = true;
@@ -72,7 +72,7 @@ public class Mensagem {
       } 
       else {
         contador++;
-        System.out.println("\nResposta inválido! Digite SIM ou NAO.");
+        System.out.println("\nResposta inválida! Digite SIM ou NAO.");
         	if (contador == 3) {
         		return erroTentativas = true;
         	}
@@ -118,9 +118,9 @@ public class Mensagem {
     System.out.println("Orientação Final: " + pessoa.getOrientacaoFinal());
   }
 
-  public void imprimirMensagemErro() {
-    System.out.println("Não foi possível realizar a verificação." +
-        "Gentileza informar dados válidos.");
+  public String imprimirMensagemErro() {
+    return "Não foi possível realizar a verificação." +
+        "Gentileza informar dados válidos.";
   }
   
   public boolean tratamentoResposta (Pessoa pessoa){
