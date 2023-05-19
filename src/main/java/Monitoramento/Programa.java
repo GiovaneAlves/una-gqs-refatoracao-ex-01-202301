@@ -24,7 +24,7 @@ class Programa {
     
     try {
     	erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
-    	validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas,scanner);
+    	erroTentativas = validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas, scanner);
     	validacao.calcularValidacaoFinal(pessoa, mensagem, erroTentativas);
     }
     catch (RuntimeException e) {

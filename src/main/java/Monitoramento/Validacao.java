@@ -44,18 +44,17 @@ public class Validacao {
     }
   }
 
-  public void validacaoDasProximasPerguntas(Mensagem mensagem, Pessoa pessoa, boolean erroTentativas, Scanner scanner) {
-    // Valido se continuo perguntando ou se vou direto para a mensagem final
-    if (!erroTentativas)
-      erroTentativas = mensagem.realizaPerguntaTeveSintomasRecenmente(pessoa, scanner);
+  public boolean validacaoDasProximasPerguntas(Mensagem mensagem, Pessoa pessoa, boolean erroTentativas, Scanner scanner) {
+	  if (!erroTentativas)
+	    erroTentativas = mensagem.realizaPerguntaTeveSintomasRecenmente(pessoa, scanner);
 
-    if (!erroTentativas) {
-      erroTentativas = mensagem.realizaPerguntaTeveContatoPessoasAssintomaticas(pessoa, scanner);
-    }
+	  if (!erroTentativas)
+	    erroTentativas = mensagem.realizaPerguntaTeveContatoPessoasAssintomaticas(pessoa, scanner);
 
-    if (!erroTentativas) {
-      erroTentativas = mensagem.realizaPerguntaEstaRetornandoViagemExterior(pessoa,scanner);
-    }
+	  if (!erroTentativas)
+	    erroTentativas = mensagem.realizaPerguntaEstaRetornandoViagemExterior(pessoa, scanner);
 
-  }
+	  return erroTentativas; // Retorna o valor atualizado de erroTentativas
+	}
+
 }
