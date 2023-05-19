@@ -23,16 +23,13 @@ class Programa {
     
     
     try {
-    	erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
-    	erroTentativas = validacao.validacaoDasProximasPerguntas(mensagem, pessoa, erroTentativas, scanner);
+    	erroTentativas = validacao.validacaoDasPerguntas(mensagem, pessoa, erroTentativas, scanner);
     	validacao.calcularValidacaoFinal(pessoa, mensagem, erroTentativas);
     }
     catch (RuntimeException e) {
 		mensagem.imprimirMensagemErro();
 		System.exit (0);
 	}
-
-
 
     scanner.close();
   }

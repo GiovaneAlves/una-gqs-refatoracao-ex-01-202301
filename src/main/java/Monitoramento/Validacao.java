@@ -44,7 +44,11 @@ public class Validacao {
     }
   }
 
-  public boolean validacaoDasProximasPerguntas(Mensagem mensagem, Pessoa pessoa, boolean erroTentativas, Scanner scanner) {
+  public boolean validacaoDasPerguntas(Mensagem mensagem, Pessoa pessoa, boolean erroTentativas, Scanner scanner) {
+	  
+	  if (!erroTentativas)
+		erroTentativas = mensagem.realizaPerguntaVacinaEmDia(pessoa, scanner);
+	  
 	  if (!erroTentativas)
 	    erroTentativas = mensagem.realizaPerguntaTeveSintomasRecenmente(pessoa, scanner);
 
@@ -54,7 +58,7 @@ public class Validacao {
 	  if (!erroTentativas)
 	    erroTentativas = mensagem.realizaPerguntaEstaRetornandoViagemExterior(pessoa, scanner);
 
-	  return erroTentativas; // Retorna o valor atualizado de erroTentativas
+	  return erroTentativas;
 	}
 
 }
