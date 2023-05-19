@@ -35,12 +35,12 @@ public class Pessoa {
 	    pessoa.nome = pessoa.nome.trim().toUpperCase();
 
 	    if (pessoa.nome.trim().isEmpty()) {
-	        System.out.println("O nome não pode ser vazio.");
+	        System.out.println("O nome não pode ser vazio!");
 	    	throw new RuntimeException(mensagem.imprimirMensagemErro());
 	    }
 
 	    if (!pessoa.nome.matches("^[\\p{L}\\s]+$")) {
-	    	System.out.println("O nome não pode conter números ou caracteres especiais");
+	    	System.out.println("O nome não pode conter números ou caracteres especiais!");
 	    	throw new IllegalArgumentException(mensagem.imprimirMensagemErro());
 	    }
 	}

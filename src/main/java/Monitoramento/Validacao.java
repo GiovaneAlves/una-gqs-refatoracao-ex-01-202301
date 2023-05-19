@@ -5,7 +5,7 @@ public class Validacao {
   public void calcularValidacaoFinal(Pessoa pessoa, Mensagem mensagem, boolean erroTentativas) {
     // Valido se imprimo a mensagem de erro
     if (erroTentativas) {
-      mensagem.imprimirMensagemErro();
+       System.out.println(mensagem.imprimirMensagemErro());
     } 
     else {
       CalculoPorcentagem calculoPorcentagem = new CalculoPorcentagem();

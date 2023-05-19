@@ -120,7 +120,7 @@ public class Mensagem {
 
   public String imprimirMensagemErro() {
     return "Não foi possível realizar a verificação." +
-        "Gentileza informar dados válidos.";
+        " Gentileza informar dados válidos.";
   }
   
   public boolean tratamentoResposta (Pessoa pessoa){
